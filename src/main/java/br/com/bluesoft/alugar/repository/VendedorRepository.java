@@ -1,11 +1,13 @@
 package br.com.bluesoft.alugar.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.bluesoft.alugar.modelo.Vendedor;
 
-public interface VendedorRepository extends CrudRepository<Vendedor, Integer> {
+public interface VendedorRepository extends JpaRepository<Vendedor, Integer> {
 
-	Vendedor findByCpf(Long cpf);
+	Optional<Vendedor> findByCpf(Long cpf);
 
 }

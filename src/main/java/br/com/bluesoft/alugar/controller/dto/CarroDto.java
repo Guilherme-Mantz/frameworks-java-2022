@@ -30,56 +30,28 @@ public class CarroDto {
 		return placa;
 	}
 
-	public void setPlaca(String placa) {
-		this.placa = placa;
-	}
-
 	public String getMarca() {
 		return marca;
-	}
-
-	public void setMarca(String marca) {
-		this.marca = marca;
 	}
 
 	public String getModelo() {
 		return modelo;
 	}
 
-	public void setModelo(String modelo) {
-		this.modelo = modelo;
-	}
-
 	public String getCor() {
 		return cor;
-	}
-
-	public void setCor(String cor) {
-		this.cor = cor;
 	}
 
 	public Integer getAno() {
 		return ano;
 	}
 
-	public void setAno(Integer ano) {
-		this.ano = ano;
-	}
-
 	public Integer getQuilometragem() {
 		return quilometragem;
 	}
 
-	public void setQuilometragem(Integer quilometragem) {
-		this.quilometragem = quilometragem;
-	}
-
 	public BigDecimal getDiaria() {
 		return diaria;
-	}
-
-	public void setDiaria(BigDecimal diaria) {
-		this.diaria = diaria;
 	}
 
 	public static List<CarroDto> toCarroDto(List<Carro> carros) {

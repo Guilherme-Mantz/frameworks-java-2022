@@ -1,5 +1,6 @@
 package br.com.bluesoft.alugar.controller.dto;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -14,7 +15,7 @@ public class DetalhesAluguelDto {
 	private String placaCarro;
 	private String nomeVendedor;
 	private Integer quantidadeDeDias;
-	private Float valorTotal;
+	private BigDecimal valorTotal;
 	private LocalDate dataDoAlugel;
 
 	public DetalhesAluguelDto(Aluguel aluguel) {
@@ -47,7 +48,7 @@ public class DetalhesAluguelDto {
 		return quantidadeDeDias;
 	}
 
-	public Float getValorTotal() {
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 

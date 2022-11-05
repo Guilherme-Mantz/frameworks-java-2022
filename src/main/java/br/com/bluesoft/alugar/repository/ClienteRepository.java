@@ -1,13 +1,13 @@
 package br.com.bluesoft.alugar.repository;
 
-import java.math.BigInteger;
+import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import br.com.bluesoft.alugar.modelo.Cliente;
 
-public interface ClienteRepository extends CrudRepository<Cliente, Integer> {
+public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
-	Cliente findByCpf(BigInteger cpf);
+	Optional<Cliente> findByCpf(Long cpf);
 
 }

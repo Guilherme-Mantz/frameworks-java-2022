@@ -1,7 +1,5 @@
 package br.com.bluesoft.alugar.modelo;
 
-import java.math.BigInteger;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,9 +16,19 @@ public class Cliente {
 	@Column(name="cliente_key")
 	private Integer clienteKey;
 	private String nome;
-	private BigInteger cpf;
+	private Long cpf;
 	private String email;
-	private BigInteger celular;
+	private Long celular;
+	
+	public Cliente() {
+	}
+
+	public Cliente(String nome, Long cpf, String email, Long celular) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.email = email;
+		this.celular = celular;
+	}
 
 	public String getNome() {
 		return nome;
@@ -30,11 +38,11 @@ public class Cliente {
 		this.nome = nome;
 	}
 
-	public BigInteger getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(BigInteger cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 
@@ -46,11 +54,11 @@ public class Cliente {
 		this.email = email;
 	}
 
-	public BigInteger getCelular() {
+	public Long getCelular() {
 		return celular;
 	}
 
-	public void setCelular(BigInteger celular) {
+	public void setCelular(Long celular) {
 		this.celular = celular;
 	}
 

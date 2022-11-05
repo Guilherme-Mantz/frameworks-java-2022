@@ -8,7 +8,6 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.PositiveOrZero;
 
 import br.com.bluesoft.alugar.modelo.Carro;
-import br.com.bluesoft.alugar.repository.CarroRepository;
 
 public class AtualizarCarroForm {
 	
@@ -80,7 +79,7 @@ public class AtualizarCarroForm {
 		this.diaria = diaria;
 	}
 
-	public Carro atualizar(Carro carro, CarroRepository carroRepository) {
+	public Carro atualizar(Carro carro) {
 		
 		carro.setMarca(this.marca);
 		carro.setModelo(this.modelo);

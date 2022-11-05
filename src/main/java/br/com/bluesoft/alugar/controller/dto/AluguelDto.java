@@ -1,18 +1,18 @@
 package br.com.bluesoft.alugar.controller.dto;
 
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import br.com.bluesoft.alugar.modelo.Aluguel;
 
 public class AluguelDto {
 
-	private BigInteger cpfCliente;
+	private Long cpfCliente;
 	private Long cpfVendedor;
 	private String placaCarro;
 	private Integer quantidadeDeDias;
 	private LocalDate dataDoAlugel;
-	private Float valorTotal;
+	private BigDecimal valorTotal;
 
 	public AluguelDto(Aluguel aluguel) {
 		this.cpfCliente = aluguel.getCliente().getCpf();
@@ -23,7 +23,7 @@ public class AluguelDto {
 		this.valorTotal = aluguel.getValorTotal();
 	}
 
-	public BigInteger getCpfCliente() {
+	public Long getCpfCliente() {
 		return cpfCliente;
 	}
 
@@ -39,7 +39,7 @@ public class AluguelDto {
 		return quantidadeDeDias;
 	}
 
-	public Float getValorTotal() {
+	public BigDecimal getValorTotal() {
 		return valorTotal;
 	}
 

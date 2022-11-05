@@ -1,7 +1,6 @@
 package br.com.bluesoft.alugar.controller.form;
 
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Optional;
 
@@ -64,12 +63,13 @@ public class AluguelForm {
 
 	public Aluguel toAluguel(ClienteRepository clienteRepository, VendedorRepository vendedorRepository, CarroRepository carroRepository) {
 		
-		Cliente cliente = clienteRepository.findByCpf(new BigInteger(this.cpfCliente));
-		Vendedor vendedor = vendedorRepository.findByCpf(this.cpfVendedor);
+		Optional<Cliente> cliente = clienteRepository.findByCpf(Long.valueOf(this.cpfCliente));
+		Optional<Vendedor> vendedor = vendedorRepository.findByCpf(this.cpfVendedor);
 		Optional<Carro> carro = carroRepository.findById(this.placaCarro);
 		
 		BigDecimal valorTotal = carro.get().getDiaria().multiply(new BigDecimal(this.quantidadeDeDias));
-		Aluguel aluguel = new Aluguel(cliente, vendedor, carro.get(), quantidadeDeDias, LocalDate.now(), valorTotal);
+		
+		Aluguel aluguel = new Aluguel(cliente.get(), vendedor.get(), carro.get(), quantidadeDeDias, LocalDate.now(), valorTotal);
 		
 		return aluguel;
 	}

@@ -66,7 +66,7 @@ public class CarroController {
 	public ResponseEntity<CarroDto> atualizarCarro(@PathVariable String placa, @RequestBody @Valid AtualizarCarroForm atualizarCarroForm) {
 		Optional<Carro> carro = carroRepository.findByPlaca(placa);
 		if(carro.isPresent()) {
-			Carro carroAtualizado = atualizarCarroForm.atualizar(carro.get(), carroRepository);
+			Carro carroAtualizado = atualizarCarroForm.atualizar(carro.get());
 			return ResponseEntity.ok(new CarroDto(carroAtualizado));
 		}
 

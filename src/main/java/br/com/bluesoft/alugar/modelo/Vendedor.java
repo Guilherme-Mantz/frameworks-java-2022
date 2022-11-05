@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,16 +15,22 @@ public class Vendedor {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="vendedor_key")
+	@Column(name = "vendedor_key")
 	private Integer vendedorKey;
 	private String nome;
 	private Long cpf;
-	
-	@Column(name="data_admissao")
+
+	@Column(name = "data_admissao")
 	private LocalDate dataAdmissao;
-	
-	@OneToOne(mappedBy = "vendedor")
-	private ContaCorrente contaCorrente;
+
+	public Vendedor() {
+	}
+
+	public Vendedor(String nome, Long cpf, LocalDate dataAdmissao) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dataAdmissao = dataAdmissao;
+	}
 
 	public Integer getVendedorKey() {
 		return vendedorKey;
@@ -57,14 +62,6 @@ public class Vendedor {
 
 	public void setDataAdmissao(LocalDate dataAdmissao) {
 		this.dataAdmissao = dataAdmissao;
-	}
-
-	public ContaCorrente getContaCorrente() {
-		return contaCorrente;
-	}
-
-	public void setContaCorrente(ContaCorrente contaCorrente) {
-		this.contaCorrente = contaCorrente;
 	}
 
 }
