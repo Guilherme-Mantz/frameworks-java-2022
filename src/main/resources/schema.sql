@@ -42,6 +42,7 @@ CREATE TABLE conta_corrente (
   conta_corrente INT NOT NULL,
   vendedor_key INT NOT NULL,
   foreign key (vendedor_key) references vendedor(vendedor_key)
+<<<<<<< HEAD
 );
 
 CREATE TABLE aluguel (
@@ -65,4 +66,6 @@ CREATE TABLE comissao(
     data_comissao DATE NOT NULL, 
     foreign key (vendedor_key) references vendedor(vendedor_key),
     foreign key (conta_corrente_key) references conta_corrente(conta_corrente_key)
+=======
+>>>>>>> c9f0a1e757c74ee83e9644870f76bd7bdd0bce35
 );
