@@ -1,6 +1,7 @@
 package br.com.bluesoft.alugar.modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,18 +20,27 @@ public class Comissao {
 	private Integer comissaoKey;
 
 	@Column(name = "valor_comissao")
-	private BigDecimal valorComissao;
+	private BigDecimal valor;
 
 	@ManyToOne
 	@JoinColumn(name = "vendedor_key")
 	private Vendedor vendedor;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "conta_corrente_key")
+	private ContaCorrente contaCorrente;
+
+	@Column(name = "data_comissao")
+	private LocalDate dataComissao;
+
 	public Comissao() {
 	}
 
-	public Comissao(BigDecimal valorComissao, Vendedor vendedor) {
-		this.valorComissao = valorComissao;
+	public Comissao(BigDecimal valor, Vendedor vendedor, ContaCorrente contaCorrente, LocalDate dataComissao) {
+		this.valor = valor;
 		this.vendedor = vendedor;
+		this.contaCorrente = contaCorrente;
+		this.dataComissao = dataComissao;
 	}
 
 	public Integer getComissaoKey() {
@@ -41,12 +51,12 @@ public class Comissao {
 		this.comissaoKey = comissaoKey;
 	}
 
-	public BigDecimal getValorComissao() {
-		return valorComissao;
+	public BigDecimal getValor() {
+		return valor;
 	}
 
-	public void setValorComissao(BigDecimal valorComissao) {
-		this.valorComissao = valorComissao;
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
 	}
 
 	public Vendedor getVendedor() {
@@ -55,6 +65,22 @@ public class Comissao {
 
 	public void setVendedor(Vendedor vendedor) {
 		this.vendedor = vendedor;
+	}
+
+	public ContaCorrente getContaCorrente() {
+		return contaCorrente;
+	}
+
+	public void setContaCorrente(ContaCorrente contaCorrente) {
+		this.contaCorrente = contaCorrente;
+	}
+
+	public LocalDate getDataComissao() {
+		return dataComissao;
+	}
+
+	public void setDataComissao(LocalDate dataComissao) {
+		this.dataComissao = dataComissao;
 	}
 
 }

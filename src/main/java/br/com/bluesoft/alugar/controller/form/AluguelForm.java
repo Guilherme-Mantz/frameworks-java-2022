@@ -2,6 +2,7 @@ package br.com.bluesoft.alugar.controller.form;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.validation.constraints.NotBlank;
@@ -67,13 +68,14 @@ public class AluguelForm {
 		Optional<Vendedor> vendedor = vendedorRepository.findByCpf(this.cpfVendedor);
 		Optional<Carro> carro = carroRepository.findById(this.placaCarro);
 		
-		BigDecimal valorTotal = carro.get().getDiaria().multiply(new BigDecimal(this.quantidadeDeDias));
+		if(cliente.isEmpty() && carro.isEmpty() && vendedor.isEmpty()) {
+			throw new NoSuchElementException();
+		}
 		
+		BigDecimal valorTotal = carro.get().getDiaria().multiply(new BigDecimal(this.quantidadeDeDias));
 		Aluguel aluguel = new Aluguel(cliente.get(), vendedor.get(), carro.get(), quantidadeDeDias, LocalDate.now(), valorTotal);
 		
 		return aluguel;
 	}
-	
-
 
 }

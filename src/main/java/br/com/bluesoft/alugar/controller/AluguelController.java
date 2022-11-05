@@ -24,6 +24,7 @@ import br.com.bluesoft.alugar.repository.AluguelRepository;
 import br.com.bluesoft.alugar.repository.CarroRepository;
 import br.com.bluesoft.alugar.repository.ClienteRepository;
 import br.com.bluesoft.alugar.repository.VendedorRepository;
+import br.com.bluesoft.alugar.service.ComissaoService;
 
 @RestController
 @RequestMapping("/aluguel")
@@ -39,7 +40,7 @@ public class AluguelController {
 	private VendedorRepository vendedorRepository;
 	
 	@Autowired
-	private ComissaoController comissaoController;
+	private ComissaoService comissaoService;
 	
 	@Autowired
 	private CarroRepository carroRepository;
@@ -51,7 +52,7 @@ public class AluguelController {
 		aluguelRepository.save(aluguel);
 		
 		/*Gerar Comissao*/
-		comissaoController.saveComissao(aluguel);
+		comissaoService.gerarComissao(aluguel);
 		
 		URI uri = uriBuilder.path("/aluguel/{id}").buildAndExpand(aluguel.getAluguelKey()).toUri();
 		return ResponseEntity.created(uri).body(new AluguelDto(aluguel));

@@ -2,17 +2,21 @@ package br.com.bluesoft.alugar.repository;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
+import br.com.bluesoft.alugar.controller.dto.ComissaoDto;
 import br.com.bluesoft.alugar.modelo.Comissao;
 
-public interface ComissaoRepository extends CrudRepository<Comissao, Integer>{
+public interface ComissaoRepository extends JpaRepository<Comissao, Integer>{
 
-	@Query("SELECT sum(c.valorComissao), c.vendedor FROM Comissao c group by c.vendedor")
-	List<Comissao> buscarComissoes();
+    @Query("SELECT new br.com.bluesoft.alugar.controller.dto.ComissaoDto(c.vendedor, SUM(c.valor), c.contaCorrente)"
+    	  + "FROM Comissao AS c GROUP BY c.vendedor")
+    List<ComissaoDto> buscarComissoes();
 
-	@Query("SELECT sum(c.valorComissao), c.vendedor FROM Comissao c WHERE c.vendedor.cpf = :cpf group by c.vendedor")
-	List<Comissao> buscaPorCpf(Long cpf);
+    @Query("SELECT new br.com.bluesoft.alugar.controller.dto.ComissaoDto(c.vendedor, SUM(c.valor), c.contaCorrente) "
+    		+ "FROM Comissao AS c WHERE c.vendedor.cpf = :cpf GROUP BY c.vendedor")
+    ComissaoDto buscarComissaoPorCpf(@Param("cpf")Long cpf);
 
 }
