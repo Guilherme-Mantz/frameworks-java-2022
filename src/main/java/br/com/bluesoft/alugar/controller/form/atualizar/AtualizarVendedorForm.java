@@ -1,4 +1,4 @@
-package br.com.bluesoft.alugar.controller.form;
+package br.com.bluesoft.alugar.controller.form.atualizar;
 
 import java.time.LocalDate;
 

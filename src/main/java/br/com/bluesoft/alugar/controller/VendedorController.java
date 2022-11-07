@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.bluesoft.alugar.controller.dto.VendedorDto;
-import br.com.bluesoft.alugar.controller.form.AtualizarVendedorForm;
 import br.com.bluesoft.alugar.controller.form.VendedorForm;
+import br.com.bluesoft.alugar.controller.form.atualizar.AtualizarVendedorForm;
 import br.com.bluesoft.alugar.modelo.Vendedor;
 import br.com.bluesoft.alugar.repository.VendedorRepository;
 

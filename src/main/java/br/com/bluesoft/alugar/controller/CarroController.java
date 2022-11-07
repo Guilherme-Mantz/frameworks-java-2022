@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.bluesoft.alugar.controller.dto.CarroDto;
-import br.com.bluesoft.alugar.controller.form.AtualizarCarroForm;
 import br.com.bluesoft.alugar.controller.form.CarroForm;
+import br.com.bluesoft.alugar.controller.form.atualizar.AtualizarCarroForm;
 import br.com.bluesoft.alugar.modelo.Carro;
 import br.com.bluesoft.alugar.repository.CarroRepository;
 

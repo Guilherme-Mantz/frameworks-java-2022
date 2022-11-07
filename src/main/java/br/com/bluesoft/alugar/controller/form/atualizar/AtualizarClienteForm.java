@@ -1,4 +1,4 @@
-package br.com.bluesoft.alugar.controller.form;
+package br.com.bluesoft.alugar.controller.form.atualizar;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
