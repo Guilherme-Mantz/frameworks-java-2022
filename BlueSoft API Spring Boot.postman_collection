@@ -56,7 +56,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DEF-1234\",\r\n    \"marca\": \"Hyundai\",\r\n    \"modelo\": \"HB30\",\r\n    \"cor\": \"Rosa\",\r\n    \"ano\": \"2022\",\r\n    \"quilometragem\": \"20000\",\r\n    \"diaria\": \"50\"\r\n}",
+							"raw": "{\r\n    \"placa\": \"DUF-9348\",\r\n    \"marca\": \"Ford\",\r\n    \"modelo\": \"Ford GT 3.5 V6 Turbo\",\r\n    \"cor\": \"Azul\",\r\n    \"ano\": \"2017\",\r\n    \"quilometragem\": \"20000\",\r\n    \"diaria\": \"750.60\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"placa\": \"DEF-1234\",\r\n    \"marca\": \"Teste\",\r\n    \"modelo\": \"HB30\",\r\n    \"cor\": \"Rosa\",\r\n    \"ano\": \"2022\",\r\n    \"quilometragem\": \"20000\",\r\n    \"diaria\": \"50\"\r\n}",
+							"raw": "{\r\n    \"marca\": \"Ford\",\r\n    \"modelo\": \"Ford GT 3.5 V6 Turbo\",\r\n    \"cor\": \"Preto\",\r\n    \"ano\": \"2017\",\r\n    \"quilometragem\": \"30000\",\r\n    \"diaria\": \"780.60\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -97,14 +97,14 @@
 							}
 						},
 						"url": {
-							"raw": "{{URL}}/carros/atualizar/DEF-1234",
+							"raw": "{{URL}}/carros/atualizar/DUF-9348",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"carros",
 								"atualizar",
-								"DEF-1234"
+								"DUF-9348"
 							]
 						}
 					},
@@ -384,7 +384,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"nome\": \"Connor Kenedy\",\r\n\t\"cpf\": 74185296374,\r\n\t\"email\": \"connor@mudeiOemail.com\",\r\n\t\"celular\": 789456325\r\n}",
+							"raw": "{\r\n\t\"nome\": \"Connor Cortez\",\r\n\t\"cpf\": 74185296374,\r\n\t\"email\": \"connor@mudeiOemail.com\",\r\n\t\"celular\": 789456325\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

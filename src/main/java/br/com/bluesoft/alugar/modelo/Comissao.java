@@ -1,7 +1,6 @@
 package br.com.bluesoft.alugar.modelo;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -27,20 +26,16 @@ public class Comissao {
 	private Vendedor vendedor;
 
 	@ManyToOne
-	@JoinColumn(name = "conta_corrente_key")
-	private ContaCorrente contaCorrente;
-
-	@Column(name = "data_comissao")
-	private LocalDate dataComissao;
+	@JoinColumn(name = "aluguel_key")
+	private Aluguel aluguel;
 
 	public Comissao() {
 	}
 
-	public Comissao(BigDecimal valor, Vendedor vendedor, ContaCorrente contaCorrente, LocalDate dataComissao) {
+	public Comissao(BigDecimal valor, Vendedor vendedor, Aluguel aluguel) {
 		this.valor = valor;
 		this.vendedor = vendedor;
-		this.contaCorrente = contaCorrente;
-		this.dataComissao = dataComissao;
+		this.aluguel = aluguel;
 	}
 
 	public Integer getComissaoKey() {
@@ -67,20 +62,12 @@ public class Comissao {
 		this.vendedor = vendedor;
 	}
 
-	public ContaCorrente getContaCorrente() {
-		return contaCorrente;
+	public Aluguel getAluguel() {
+		return aluguel;
 	}
 
-	public void setContaCorrente(ContaCorrente contaCorrente) {
-		this.contaCorrente = contaCorrente;
-	}
-
-	public LocalDate getDataComissao() {
-		return dataComissao;
-	}
-
-	public void setDataComissao(LocalDate dataComissao) {
-		this.dataComissao = dataComissao;
+	public void setAluguel(Aluguel aluguel) {
+		this.aluguel = aluguel;
 	}
 
 }

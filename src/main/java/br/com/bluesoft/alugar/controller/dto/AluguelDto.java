@@ -7,6 +7,7 @@ import br.com.bluesoft.alugar.modelo.Aluguel;
 
 public class AluguelDto {
 
+	private Integer id;
 	private Long cpfCliente;
 	private Long cpfVendedor;
 	private String placaCarro;
@@ -15,12 +16,17 @@ public class AluguelDto {
 	private BigDecimal valorTotal;
 
 	public AluguelDto(Aluguel aluguel) {
+		this.id = aluguel.getAluguelKey();
 		this.cpfCliente = aluguel.getCliente().getCpf();
 		this.cpfVendedor = aluguel.getVendedor().getCpf();
 		this.placaCarro = aluguel.getCarro().getPlaca();
 		this.quantidadeDeDias = aluguel.getQuantidadeDeDias();
 		this.dataDoAlugel = aluguel.getDataDoAluguel();
 		this.valorTotal = aluguel.getValorTotal();
+	}
+	
+	public Integer getId() {
+		return id;
 	}
 
 	public Long getCpfCliente() {

@@ -61,8 +61,7 @@ CREATE TABLE comissao(
     comissao_key INT PRIMARY KEY AUTO_INCREMENT,
     valor_comissao FLOAT NOT NULL,
     vendedor_key INT NOT NULL,
-    conta_corrente_key INT NOT NULL,
-    data_comissao DATE NOT NULL, 
+    aluguel_key INT NOT NULL,
     foreign key (vendedor_key) references vendedor(vendedor_key),
-    foreign key (conta_corrente_key) references conta_corrente(conta_corrente_key)
+    foreign key (aluguel_key) references aluguel(aluguel_key)
 );

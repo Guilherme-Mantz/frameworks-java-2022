@@ -10,7 +10,7 @@ import javax.validation.constraints.PositiveOrZero;
 import br.com.bluesoft.alugar.modelo.Carro;
 
 public class AtualizarCarroForm {
-	
+
 	@NotBlank
 	private String marca;
 
@@ -80,7 +80,7 @@ public class AtualizarCarroForm {
 	}
 
 	public Carro atualizar(Carro carro) {
-		
+
 		carro.setMarca(this.marca);
 		carro.setModelo(this.modelo);
 		carro.setCor(this.cor);

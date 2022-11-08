@@ -9,7 +9,8 @@ import br.com.bluesoft.alugar.modelo.Aluguel;
 public class DetalhesAluguelDto {
 
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-	
+
+	private Integer id;
 	private String nomeCliente;
 	private String modeloCarro;
 	private String placaCarro;
@@ -19,6 +20,7 @@ public class DetalhesAluguelDto {
 	private LocalDate dataDoAlugel;
 
 	public DetalhesAluguelDto(Aluguel aluguel) {
+		this.id = aluguel.getAluguelKey();
 		this.nomeCliente = aluguel.getCliente().getNome();
 		this.modeloCarro = aluguel.getCarro().getModelo();
 		this.placaCarro = aluguel.getCarro().getPlaca();
@@ -26,6 +28,10 @@ public class DetalhesAluguelDto {
 		this.quantidadeDeDias = aluguel.getQuantidadeDeDias();
 		this.valorTotal = aluguel.getValorTotal();
 		this.dataDoAlugel = aluguel.getDataDoAluguel();
+	}
+
+	public Integer getId() {
+		return id;
 	}
 
 	public String getNomeCliente() {

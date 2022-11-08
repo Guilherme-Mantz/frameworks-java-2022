@@ -22,7 +22,6 @@ public class ContaCorrente {
 	
 	@Column(name="conta_corrente")
 	private Integer contaCorrente;
-
 	
 	@ManyToOne
 	@JoinColumn(name="vendedor_key")

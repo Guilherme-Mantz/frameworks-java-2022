@@ -4,10 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
-import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,18 +21,21 @@ import br.com.bluesoft.alugar.controller.dto.CarroDto;
 import br.com.bluesoft.alugar.controller.form.CarroForm;
 import br.com.bluesoft.alugar.controller.form.atualizar.AtualizarCarroForm;
 import br.com.bluesoft.alugar.modelo.Carro;
-import br.com.bluesoft.alugar.repository.CarroRepository;
+import br.com.bluesoft.alugar.service.CarroService;
 
 @RestController
 @RequestMapping("/carros")
 public class CarroController {
 
-	@Autowired
-	private CarroRepository carroRepository;
+	private CarroService carroService;
+	
+	public CarroController(CarroService carroService) {
+		this.carroService = carroService;
+	}
 
 	@GetMapping
 	public List<CarroDto> listarCarros() {
-		List<Carro> carros = carroRepository.findAll();
+		List<Carro> carros = carroService.listarCarros();
 		List<CarroDto> dto = CarroDto.toCarroDto(carros);
 
 		return dto;
@@ -42,7 +43,7 @@ public class CarroController {
 
 	@GetMapping("/{placa}")
 	public ResponseEntity<CarroDto> buscarPelaPlaca(@PathVariable String placa) {
-		Optional<Carro> carro = carroRepository.findById(placa);
+		Optional<Carro> carro = carroService.buscarCarroPelaPlaca(placa);
 		if (carro.isPresent()) {
 			return ResponseEntity.ok(new CarroDto(carro.get()));
 		}
@@ -51,22 +52,18 @@ public class CarroController {
 	}
 
 	@PostMapping("/cadastrar")
-	@Transactional
 	public ResponseEntity<CarroDto> cadastrarCarro(@RequestBody @Valid CarroForm carroForm, UriComponentsBuilder uriBuilder) {
-		
-		Carro carro = carroForm.toCarro();
-		carroRepository.save(carro);
+		Carro carro = carroService.cadastrar(carroForm);
 		
 		URI uri = uriBuilder.path("/carros/{placa}").buildAndExpand(carro.getPlaca()).toUri();
 		return ResponseEntity.created(uri).body(new CarroDto(carro));
 	}
 
 	@PutMapping("/atualizar/{placa}")
-	@Transactional
 	public ResponseEntity<CarroDto> atualizarCarro(@PathVariable String placa, @RequestBody @Valid AtualizarCarroForm atualizarCarroForm) {
-		Optional<Carro> carro = carroRepository.findByPlaca(placa);
+		Optional<Carro> carro = carroService.buscarCarroPelaPlaca(placa);
 		if(carro.isPresent()) {
-			Carro carroAtualizado = atualizarCarroForm.atualizar(carro.get());
+			Carro carroAtualizado = carroService.atualizar(carro.get(), atualizarCarroForm);
 			return ResponseEntity.ok(new CarroDto(carroAtualizado));
 		}
 
@@ -74,12 +71,11 @@ public class CarroController {
 	}
 
 	@DeleteMapping("/deletar/{placa}")
-	@Transactional
 	public ResponseEntity<?> deletarCarro(@PathVariable String placa) {
 		
-		Optional<Carro> carro = carroRepository.findByPlaca(placa);
+		Optional<Carro> carro = carroService.buscarCarroPelaPlaca(placa);
 		if(carro.isPresent()) {
-			carroRepository.deleteById(placa);
+			carroService.deletar(placa);
 			return ResponseEntity.noContent().build();
 		}
 
